@@ -23,10 +23,10 @@ gem "tailwindcss-rails"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
-# Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
-gem "solid_cache"
-gem "solid_queue"
-gem "solid_cable"
+# Launch config: in-memory cache, :async jobs, and the built-in async cable
+# adapter (see config/environments/production.rb) — no database-backed Solid
+# adapters, so a single Postgres serves the whole app. Reintroduce solid_cache/
+# solid_queue with their own databases and a worker dyno when volume warrants.
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
