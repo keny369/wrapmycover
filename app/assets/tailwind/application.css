@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --color-oxblood-50: #faf3f2;
+  --color-oxblood-100: #f3e1de;
+  --color-oxblood-200: #e5bfb9;
+  --color-oxblood-400: #b56a5f;
+  --color-oxblood-600: #7c2b26;
+  --color-oxblood-700: #5e1f1c;
+  --color-oxblood-800: #4a1815;
+  --color-oxblood-900: #33100e;
+
+  --color-parchment-50: #faf8f4;
+  --color-parchment-100: #f2efe8;
+  --color-parchment-200: #e4dfd2;
+  --color-parchment-300: #cfc6b3;
+  --color-parchment-700: #6b6259;
+  --color-parchment-900: #2b2621;
+
+  --font-display: "Avenir Next", "Segoe UI", system-ui, sans-serif;
+}

@@ -1,0 +1,205 @@
+<% content_for :title, "Wrap My Cover — turn your ebook cover into a print-ready book cover" %>
+
+<!-- Hero -->
+<section class="mx-auto max-w-6xl px-5 pt-20 pb-16">
+  <div class="grid items-center gap-12 lg:grid-cols-2">
+    <div>
+      <p class="text-xs font-bold uppercase tracking-[0.18em] text-oxblood-600">The ebook-to-print cover converter</p>
+      <h1 class="mt-4 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl text-balance">
+        Turn your ebook cover into a print-ready book cover.
+      </h1>
+      <p class="mt-5 max-w-xl text-lg text-parchment-700">
+        Upload the front cover you already have. Wrap My Cover builds the spine, back cover,
+        bleed, safe zones and barcode area, then exports a 300 DPI PDF ready for Amazon KDP.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
+        <%= link_to "Wrap my cover", new_user_registration_path,
+              class: "rounded-xl bg-oxblood-700 px-6 py-3.5 text-[15px] font-semibold text-parchment-50 hover:bg-oxblood-600" %>
+        <%= link_to "See how it works", "#how-it-works",
+              class: "text-[15px] font-semibold text-parchment-900 underline-offset-4 hover:underline" %>
+      </div>
+      <p class="mt-4 text-sm text-parchment-700">Paperback, hardcover and dust jacket. No design software required.</p>
+    </div>
+
+    <!-- Stylised wrap diagram -->
+    <div aria-hidden="true" class="relative mx-auto w-full max-w-md">
+      <div class="rounded-2xl bg-parchment-900 p-6 shadow-2xl">
+        <div class="relative flex overflow-hidden rounded-sm ring-2 ring-oxblood-400/60">
+          <div class="relative h-56 flex-1 bg-parchment-200 p-3">
+            <div class="h-1.5 w-3/4 rounded bg-oxblood-800/70"></div>
+            <div class="mt-2 h-1 w-2/3 rounded bg-parchment-700/50"></div>
+            <div class="mt-1 h-1 w-3/5 rounded bg-parchment-700/50"></div>
+            <div class="mt-1 h-1 w-2/3 rounded bg-parchment-700/50"></div>
+            <div class="absolute bottom-3 right-3 flex h-10 w-16 flex-col justify-center rounded-sm bg-white px-1.5 ring-1 ring-amber-500">
+              <div class="h-4 w-full bg-[repeating-linear-gradient(90deg,#141210_0_2px,transparent_2px_4px)]"></div>
+              <div class="mt-0.5 text-center text-[5px] font-bold tracking-widest text-parchment-900">ISBN</div>
+            </div>
+            <div class="pointer-events-none absolute inset-2 rounded-sm border border-dashed border-teal-600/70"></div>
+          </div>
+          <div class="flex h-56 w-7 items-center justify-center bg-oxblood-800">
+            <span class="rotate-90 whitespace-nowrap text-[8px] font-semibold tracking-[0.3em] text-parchment-100">YOUR BOOK</span>
+          </div>
+          <div class="relative h-56 flex-1 bg-parchment-100 p-3">
+            <div class="mx-auto mt-4 h-2 w-4/5 rounded bg-oxblood-800"></div>
+            <div class="mx-auto mt-2 h-1 w-3/5 rounded bg-parchment-700/60"></div>
+            <div class="mx-auto mt-10 h-16 w-3/5 rounded-sm bg-parchment-200 ring-1 ring-parchment-300"></div>
+            <div class="pointer-events-none absolute inset-2 rounded-sm border border-dashed border-teal-600/70"></div>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center justify-between text-[11px] font-medium text-parchment-300">
+          <span>Back &middot; spine &middot; front</span>
+          <span>One 300 DPI PDF</span>
+          <span class="text-green-400">Sized to KDP</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust strip -->
+<section class="border-y border-parchment-200 bg-parchment-100/60">
+  <div class="mx-auto flex max-w-6xl flex-wrap justify-center gap-x-10 gap-y-2 px-5 py-4 text-center text-sm font-medium text-parchment-700">
+    <span>Sized to KDP&rsquo;s current specifications.</span>
+    <span>Rebuilt in one click when your page count changes.</span>
+    <span>Fix-or-refund on file rejections.</span>
+  </div>
+</section>
+
+<!-- Section 2: The reframe -->
+<section class="py-20">
+  <div class="mx-auto max-w-3xl px-5 text-center">
+    <h2 class="text-3xl font-semibold tracking-tight text-balance">Your ebook cover is only one-third of a paperback cover.</h2>
+    <p class="mx-auto mt-5 max-w-2xl text-lg text-parchment-700">
+      Amazon prints from a single PDF containing the back cover, the spine and the front
+      cover, sized to your exact trim, page count and paper. Your ebook file is the front
+      panel at screen resolution. Wrap My Cover builds the other two-thirds around it and gets
+      the measurements right.
+    </p>
+  </div>
+</section>
+
+<!-- Section 3: How it works -->
+<section id="how-it-works" class="scroll-mt-20 border-t border-parchment-200 bg-parchment-100/60 py-16">
+  <div class="mx-auto max-w-6xl px-5">
+    <h2 class="text-2xl font-semibold tracking-tight">Three steps between your cover and your paperback.</h2>
+    <div class="mt-8 grid gap-6 md:grid-cols-3">
+      <div class="rounded-xl border border-parchment-200 bg-parchment-50 p-6">
+        <p class="text-sm font-bold text-oxblood-600">1</p>
+        <h3 class="mt-2 font-semibold">Upload your front cover.</h3>
+        <p class="mt-2 text-sm text-parchment-700">JPEG, PNG or PDF. Separate back artwork optional.</p>
+      </div>
+      <div class="rounded-xl border border-parchment-200 bg-parchment-50 p-6">
+        <p class="text-sm font-bold text-oxblood-600">2</p>
+        <h3 class="mt-2 font-semibold">Enter your book&rsquo;s details.</h3>
+        <p class="mt-2 text-sm text-parchment-700">Trim size, page count, paper and binding. Wrap My Cover calculates the full cover dimensions and the spine width.</p>
+      </div>
+      <div class="rounded-xl border border-parchment-200 bg-parchment-50 p-6">
+        <p class="text-sm font-bold text-oxblood-600">3</p>
+        <h3 class="mt-2 font-semibold">Download the PDF.</h3>
+        <p class="mt-2 text-sm text-parchment-700">One print-ready file at 300 DPI, with bleed, safe zones and the barcode area already handled.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 4: The production work, handled -->
+<section class="py-16">
+  <div class="mx-auto max-w-6xl px-5">
+    <h2 class="text-2xl font-semibold tracking-tight">The production work, handled.</h2>
+    <div class="mt-8 grid gap-6 md:grid-cols-3">
+      <div class="rounded-xl border border-parchment-200 bg-parchment-50 p-6">
+        <h3 class="font-semibold">The size is right the first time.</h3>
+        <p class="mt-2 text-sm text-parchment-700">Spine width, bleed and safe zones are calculated from your specifications, so the file matches KDP&rsquo;s requirements before you upload.</p>
+      </div>
+      <div class="rounded-xl border border-parchment-200 bg-parchment-50 p-6">
+        <h3 class="font-semibold">Your artwork carries across the whole book.</h3>
+        <p class="mt-2 text-sm text-parchment-700">Wrap My Cover extends your front cover across the spine and back, or fits separate front and back art into one seamless spread. Nothing is stretched.</p>
+      </div>
+      <div class="rounded-xl border border-parchment-200 bg-parchment-50 p-6">
+        <h3 class="font-semibold">No rebuilding in Canva or Photoshop.</h3>
+        <p class="mt-2 text-sm text-parchment-700">A guided editor handles spine text and back cover copy, and ends in one file you can upload.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 5: The moving target -->
+<section class="border-t border-parchment-200 bg-parchment-100/60 py-16">
+  <div class="mx-auto grid max-w-6xl items-center gap-10 px-5 lg:grid-cols-2">
+    <div>
+      <h2 class="text-2xl font-semibold tracking-tight text-balance">Your page count changed. Your spine should too.</h2>
+      <p class="mt-4 text-parchment-700">
+        Edits move page counts, and page counts move spine widths. Change the number in
+        Wrap My Cover and the whole cover rebuilds itself. Re-export in one click.
+      </p>
+    </div>
+    <!-- page-count -> spine visual -->
+    <div aria-hidden="true" class="flex items-end justify-center gap-6">
+      <% [[180, "h-6"], [224, "h-8"], [276, "h-11"]].each do |pages, spine| %>
+        <div class="flex flex-col items-center gap-2">
+          <div class="flex items-end gap-1">
+            <div class="h-24 w-14 rounded-sm bg-parchment-200 ring-1 ring-parchment-300"></div>
+            <div class="<%= spine %> w-3 rounded-sm bg-oxblood-700"></div>
+            <div class="h-24 w-14 rounded-sm bg-parchment-200 ring-1 ring-parchment-300"></div>
+          </div>
+          <span class="font-mono text-xs text-parchment-700"><%= pages %> pp</span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- Section 6: The guarantee -->
+<section class="py-16">
+  <div class="mx-auto max-w-3xl px-5 text-center">
+    <h2 class="text-2xl font-semibold tracking-tight">Files that KDP accepts.</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-parchment-700">
+      If KDP rejects a Wrap My Cover file for size, bleed, spine or barcode placement, we fix it
+      or refund it. Rejections for content policy sit outside any tool&rsquo;s control, and
+      we say so plainly.
+    </p>
+  </div>
+</section>
+
+<!-- Section 7: FAQ -->
+<section class="border-t border-parchment-200 bg-parchment-100/60 py-16">
+  <div class="mx-auto max-w-3xl px-5">
+    <h2 class="text-2xl font-semibold tracking-tight">Questions authors actually ask</h2>
+    <dl class="mt-8 space-y-7">
+      <div>
+        <dt class="font-semibold">Doesn&rsquo;t KDP have a free Cover Creator?</dt>
+        <dd class="mt-1.5 text-parchment-700">It does, and it is template-locked, runs only inside KDP, requires your interior to be processed first, and its files cannot be downloaded or reused anywhere else. Wrap My Cover starts from your finished design and gives you the file.</dd>
+      </div>
+      <div>
+        <dt class="font-semibold">I can do this in Canva.</dt>
+        <dd class="mt-1.5 text-parchment-700">Many authors do, after finding the template, doing the spine arithmetic, managing bleed by eye, and redoing all of it when the page count changes. Wrap My Cover removes those steps.</dd>
+      </div>
+      <div>
+        <dt class="font-semibold">My designer only gave me the front cover.</dt>
+        <dd class="mt-1.5 text-parchment-700">That is the intended starting point. Upload the designer&rsquo;s file and Wrap My Cover builds the paperback or hardcover edition around it. Check your licence permits print use.</dd>
+      </div>
+      <div>
+        <dt class="font-semibold">Will the artwork stretch across the back?</dt>
+        <dd class="mt-1.5 text-parchment-700">Wrap My Cover extends artwork rather than stretching it, and you approve a full preview before export. You can also supply separate back art.</dd>
+      </div>
+      <div>
+        <dt class="font-semibold">My page count isn&rsquo;t final.</dt>
+        <dd class="mt-1.5 text-parchment-700">Enter the current count now and re-export in one click when it changes. The spine follows the book.</dd>
+      </div>
+      <div>
+        <dt class="font-semibold">What if KDP still rejects it?</dt>
+        <dd class="mt-1.5 text-parchment-700">Rejections for size, bleed, spine and barcode placement are covered by fix-or-refund. Content-policy rejections are not, and no tool can honestly claim otherwise.</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- Closing -->
+<section class="py-20">
+  <div class="mx-auto max-w-3xl px-5 text-center">
+    <h2 class="text-3xl font-semibold tracking-tight">The paperback you keep postponing.</h2>
+    <p class="mt-4 text-lg text-parchment-700">Upload the cover. Download the file. Order the proof.</p>
+    <%= link_to "Wrap my cover", new_user_registration_path,
+          class: "mt-8 inline-block rounded-xl bg-oxblood-700 px-6 py-3.5 font-semibold text-parchment-50 hover:bg-oxblood-600" %>
+  </div>
+</section>

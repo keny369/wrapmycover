@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="h-full">
+  <head>
+    <title><%= content_for(:title) || "Wrap My Cover — the ebook-to-print cover converter" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Turn your ebook cover into a print-ready book cover. Wrap My Cover builds the spine, back cover, bleed, safe zones and barcode area, then exports a 300 DPI PDF ready for Amazon KDP.">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= yield :head %>
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="h-full bg-parchment-50 font-display text-parchment-900 antialiased">
+    <header class="border-b border-parchment-200 bg-parchment-50/90 backdrop-blur sticky top-0 z-40">
+      <nav class="mx-auto flex h-16 max-w-6xl items-center gap-6 px-5">
+        <%# Brand lockup: the name never appears without its descriptor at launch. %>
+        <%= link_to root_path, class: "flex items-center gap-2.5", "aria-label": "Wrap My Cover — the ebook-to-print cover converter" do %>
+          <svg viewBox="0 0 32 32" class="h-8 w-8 flex-none" aria-hidden="true">
+            <rect width="32" height="32" rx="8" fill="#5e1f1c"></rect>
+            <path d="M16 9.4 C 13.4 8.1, 9.6 8.1, 7 9.1 L 7 22 C 9.6 21, 13.4 21, 16 22.4 Z" fill="#f4ede9"></path>
+            <path d="M16 9.4 C 18.6 8.1, 22.4 8.1, 25 9.1 L 25 22 C 22.4 21, 18.6 21, 16 22.4 Z" fill="#e4d9c8"></path>
+            <line x1="16" y1="9.4" x2="16" y2="22.4" stroke="#5e1f1c" stroke-width="1.1"></line>
+            <path d="M25 9.1 L 20.8 8.35 L 25 12 Z" fill="#c9920e"></path>
+          </svg>
+          <span class="flex flex-col leading-none">
+            <span class="text-[15px] font-semibold tracking-tight">Wrap My Cover</span>
+            <span class="mt-0.5 hidden text-[10px] font-medium uppercase tracking-[0.12em] text-parchment-600 sm:block">The ebook-to-print cover converter</span>
+          </span>
+        <% end %>
+        <div class="ml-auto flex items-center gap-5 text-sm">
+          <%= link_to "Pricing", pricing_path, class: "text-parchment-700 hover:text-parchment-900" %>
+          <% if user_signed_in? %>
+            <%= link_to "Account", account_path, class: "text-parchment-700 hover:text-parchment-900" %>
+            <%= button_to "Sign out", destroy_user_session_path, method: :delete,
+                  class: "rounded-lg border border-parchment-200 px-3.5 py-2 font-semibold text-parchment-700 hover:bg-parchment-100 cursor-pointer" %>
+          <% else %>
+            <%= link_to "Sign in", new_user_session_path, class: "text-parchment-700 hover:text-parchment-900" %>
+            <%= link_to "Start free", new_user_registration_path,
+                  class: "rounded-lg bg-oxblood-700 px-4 py-2 font-semibold text-parchment-50 hover:bg-oxblood-600" %>
+          <% end %>
+        </div>
+      </nav>
+    </header>
+
+    <% if notice.present? %>
+      <div class="mx-auto mt-4 max-w-6xl px-5">
+        <p class="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800" role="status"><%= notice %></p>
+      </div>
+    <% end %>
+    <% if alert.present? %>
+      <div class="mx-auto mt-4 max-w-6xl px-5">
+        <p class="rounded-lg border border-oxblood-200 bg-oxblood-50 px-4 py-3 text-sm text-oxblood-800" role="alert"><%= alert %></p>
+      </div>
+    <% end %>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer class="mt-24 border-t border-parchment-200 py-10">
+      <div class="mx-auto flex max-w-6xl flex-wrap items-baseline gap-x-4 gap-y-2 px-5 text-sm text-parchment-700">
+        <span class="font-semibold text-parchment-900">Wrap My Cover.</span>
+        <span>The ebook-to-print cover converter.</span>
+        <span class="ml-auto">Wrap My Cover is not affiliated with Amazon. Amazon, Kindle and KDP are trademarks of Amazon.com, Inc.</span>
+      </div>
+    </footer>
+  </body>
+</html>

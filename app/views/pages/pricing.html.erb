@@ -1,0 +1,89 @@
+<% content_for :title, "Pricing — Wrap My Cover" %>
+
+<section class="mx-auto max-w-6xl px-5 pt-16 pb-8 text-center">
+  <h1 class="text-4xl font-semibold tracking-tight">Simple, per-book pricing</h1>
+  <p class="mx-auto mt-4 max-w-2xl text-lg text-parchment-700">
+    Design and preview for free. Pay once per book to unlock its exports forever &mdash;
+    or go Pro for unlimited books.
+  </p>
+</section>
+
+<section class="mx-auto grid max-w-6xl gap-6 px-5 pb-16 md:grid-cols-3">
+  <!-- Free -->
+  <div class="flex flex-col rounded-2xl border border-parchment-200 bg-parchment-50 p-7">
+    <h2 class="font-semibold">Free</h2>
+    <p class="mt-2 text-4xl font-semibold">$0</p>
+    <ul class="mt-6 space-y-2.5 text-sm text-parchment-700">
+      <li>Full visual editor, all three paths</li>
+      <li>Text extraction &amp; live layers</li>
+      <li>Exact KDP geometry &amp; preflight</li>
+      <li>Watermarked preview exports</li>
+    </ul>
+    <div class="mt-auto pt-7">
+      <%= link_to "Start free", new_user_registration_path,
+            class: "block rounded-xl border border-parchment-300 px-5 py-3 text-center font-semibold hover:bg-parchment-100" %>
+    </div>
+  </div>
+
+  <!-- Per book -->
+  <div class="flex flex-col rounded-2xl border-2 border-oxblood-600 bg-parchment-50 p-7 shadow-xl">
+    <div class="flex items-center justify-between">
+      <h2 class="font-semibold">Per book</h2>
+      <span class="rounded-full bg-oxblood-700 px-3 py-1 text-xs font-bold text-parchment-50">Most popular</span>
+    </div>
+    <p class="mt-2 text-4xl font-semibold">$14.99 <span class="text-base font-normal text-parchment-700">one-time</span></p>
+    <ul class="mt-6 space-y-2.5 text-sm text-parchment-700">
+      <li>Everything in Free</li>
+      <li>Print-ready PDF &amp; eBook exports</li>
+      <li>Unlimited re-exports for this title</li>
+      <li>Free re-fits: new trim, page count, or paperback &rarr; hardcover</li>
+    </ul>
+    <div class="mt-auto pt-7">
+      <%= form_with url: checkouts_path, method: :post, data: { turbo: false } do |f| %>
+        <%= f.hidden_field :kind, value: "book" %>
+        <%= f.text_field :book_title, required: true, maxlength: 120,
+              placeholder: "Your book's title",
+              class: "mb-3 w-full rounded-xl border border-parchment-300 bg-white px-4 py-3 text-sm focus:border-oxblood-600 focus:outline-none" %>
+        <%= f.submit "Unlock this book — $14.99",
+              class: "w-full cursor-pointer rounded-xl bg-oxblood-700 px-5 py-3 font-semibold text-parchment-50 hover:bg-oxblood-600" %>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Pro -->
+  <div class="flex flex-col rounded-2xl border border-parchment-200 bg-parchment-50 p-7">
+    <h2 class="font-semibold">Pro</h2>
+    <p class="mt-2 text-4xl font-semibold">$99 <span class="text-base font-normal text-parchment-700">/ year</span></p>
+    <ul class="mt-6 space-y-2.5 text-sm text-parchment-700">
+      <li>Everything in Per book</li>
+      <li>Unlimited books &amp; exports</li>
+      <li>For cover designers &amp; small presses</li>
+      <li>Cancel anytime in the billing portal</li>
+    </ul>
+    <div class="mt-auto pt-7">
+      <%= form_with url: checkouts_path, method: :post, data: { turbo: false } do |f| %>
+        <%= f.hidden_field :kind, value: "pro" %>
+        <%= f.submit "Go Pro — $99/yr",
+              class: "w-full cursor-pointer rounded-xl border border-oxblood-700 px-5 py-3 font-semibold text-oxblood-700 hover:bg-oxblood-50" %>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto max-w-3xl px-5 pb-20">
+  <h2 class="text-xl font-semibold">Questions</h2>
+  <dl class="mt-6 space-y-6 text-sm">
+    <div>
+      <dt class="font-semibold">How do payments work?</dt>
+      <dd class="mt-1 text-parchment-700">Checkout is handled by Stripe on Stripe&rsquo;s own secure pages. Your card details never touch our servers.</dd>
+    </div>
+    <div>
+      <dt class="font-semibold">What counts as one book?</dt>
+      <dd class="mt-1 text-parchment-700">One title. Paperback, hardcover and eBook covers for the same title are all included, along with every re-export and re-fit.</dd>
+    </div>
+    <div>
+      <dt class="font-semibold">What if my cover is rejected by KDP?</dt>
+      <dd class="mt-1 text-parchment-700">If KDP rejects a Wrap My Cover file for size, bleed, spine or barcode placement, we fix it or refund it. Rejections for content policy sit outside any tool&rsquo;s control, and we say so plainly.</dd>
+    </div>
+  </dl>
+</section>
