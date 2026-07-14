@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<% @paths.each do |p| %>
+  <url>
+    <loc>https://<%= @host %><%= p[:path] %></loc>
+    <changefreq><%= p[:changefreq] %></changefreq>
+    <priority><%= p[:priority] %></priority>
+  </url>
+<% end %>
+</urlset>

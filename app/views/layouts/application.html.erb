@@ -1,11 +1,54 @@
 <!DOCTYPE html>
-<html class="h-full">
+<html lang="en" class="h-full">
   <head>
-    <title><%= content_for(:title) || "Wrap My Cover — the ebook-to-print cover converter" %></title>
+    <%
+      page_title = content_for(:title).presence || "Wrap My Cover — ebook covers to print-ready KDP covers"
+      page_desc  = content_for(:description).presence || "Turn your ebook cover into a print-ready paperback or hardcover cover. Wrap My Cover builds the spine, back and bleed, then exports a 300 DPI KDP PDF."
+      og_image   = "https://#{ApplicationController::CANONICAL_HOST || request.host}/og-image.png"
+    %>
+    <title><%= page_title %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="Turn your ebook cover into a print-ready book cover. Wrap My Cover builds the spine, back cover, bleed, safe zones and barcode area, then exports a 300 DPI PDF ready for Amazon KDP.">
+    <meta name="description" content="<%= page_desc %>">
+    <link rel="canonical" href="<%= canonical_url %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <%# Open Graph + Twitter %>
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Wrap My Cover">
+    <meta property="og:title" content="<%= page_title %>">
+    <meta property="og:description" content="<%= page_desc %>">
+    <meta property="og:url" content="<%= canonical_url %>">
+    <meta property="og:image" content="<%= og_image %>">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= page_title %>">
+    <meta name="twitter:description" content="<%= page_desc %>">
+    <meta name="twitter:image" content="<%= og_image %>">
+
+    <%# Structured data %>
+    <% canonical_root = "https://#{ApplicationController::CANONICAL_HOST || request.host}" %>
+    <script type="application/ld+json" nonce="<%= content_security_policy_nonce %>">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "Wrap My Cover",
+          "url": "<%= canonical_root %>",
+          "logo": "<%= canonical_root %>/icon.png",
+          "description": "The ebook-to-print cover converter. Turns an ebook cover into a print-ready Amazon KDP paperback or hardcover cover."
+        },
+        {
+          "@type": "WebSite",
+          "name": "Wrap My Cover",
+          "url": "<%= canonical_root %>"
+        }
+      ]
+    }
+    </script>
+
     <%= yield :head %>
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="icon" href="/icon.png" type="image/png">

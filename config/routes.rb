@@ -17,5 +17,8 @@ Rails.application.routes.draw do
 
   post "webhooks/stripe", to: "webhooks#stripe"
 
+  get "robots.txt"  => "seo#robots",  defaults: { format: "text" }
+  get "sitemap.xml" => "seo#sitemap", defaults: { format: "xml" }
+
   get "up" => "rails/health#show", as: :rails_health_check
 end
