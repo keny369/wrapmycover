@@ -57,7 +57,7 @@ group :development do
 end
 
 # --- Authentication, billing, protection ---
-gem "devise", "~> 4.9"
+gem "devise", "~> 5.0"
 gem "stripe", "~> 15.0"
 gem "rack-attack", "~> 6.7"
 gem "invisible_captcha", "~> 2.3"
