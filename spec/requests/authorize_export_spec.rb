@@ -73,4 +73,26 @@ RSpec.describe "POST /api/internal/authorize_export", type: :request do
     post_authorize(user_id: user.id, book_key: "22222222-2222-4222-8222-222222222222", fingerprint: fingerprint)
     expect(response.parsed_body["allowed"]).to be(false)
   end
+
+  it "does not honour a refunded purchase" do
+    user = create(:user)
+    create(:purchase, user: user, book_key: book_key, content_fingerprint: fingerprint, status: "refunded")
+    post_authorize(user_id: user.id, book_key: book_key, fingerprint: fingerprint)
+    expect(response.parsed_body["allowed"]).to be(false)
+  end
+
+  it "does not honour a still-pending (unpaid) purchase" do
+    user = create(:user)
+    create(:purchase, user: user, book_key: book_key, status: "pending")
+    post_authorize(user_id: user.id, book_key: book_key, fingerprint: fingerprint)
+    expect(response.parsed_body["allowed"]).to be(false)
+  end
+
+  it "returns a well-formed error for an unparseable body" do
+    raw = "not json"
+    sig = "sha256=" + OpenSSL::HMAC.hexdigest("SHA256", secret, raw)
+    post "/api/internal/authorize_export", params: raw,
+         headers: { "CONTENT_TYPE" => "application/json", "X-Signature" => sig }
+    expect(response).to have_http_status(:bad_request)
+  end
 end
