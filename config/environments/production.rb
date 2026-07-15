@@ -25,7 +25,7 @@ Rails.application.configure do
   # config.asset_host = "http://assets.example.com"
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
 
   # Heroku's router terminates TLS and passes X-Forwarded-Proto, but serves
   # plain HTTP without redirecting. assume_ssl would mask the scheme and stop
