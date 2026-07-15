@@ -4,6 +4,20 @@
   <h1 class="text-3xl font-semibold tracking-tight">Your account</h1>
   <p class="mt-1 text-sm text-parchment-700"><%= current_user.email %></p>
 
+  <!-- The editor -->
+  <div class="mt-10 rounded-2xl border-2 border-oxblood-600 bg-parchment-50 p-6">
+    <div class="flex flex-wrap items-center gap-4">
+      <div>
+        <h2 class="font-semibold">Start a cover</h2>
+        <p class="mt-1 text-sm text-parchment-700">Upload your front cover, set the book&rsquo;s details, and preview the full wrap in the editor.</p>
+      </div>
+      <div class="ml-auto">
+        <%= link_to "Open the editor", editor_url,
+              class: "rounded-xl bg-oxblood-700 px-4 py-2.5 text-sm font-semibold text-parchment-50 hover:bg-oxblood-600" %>
+      </div>
+    </div>
+  </div>
+
   <!-- Subscription -->
   <div class="mt-10 rounded-2xl border border-parchment-200 bg-parchment-50 p-6">
     <div class="flex flex-wrap items-center gap-4">

@@ -28,4 +28,12 @@ RSpec.describe "Account page", type: :request do
     expect(response).to have_http_status(:not_found)
     expect(victim.active_sessions.count).to eq(1)
   end
+  it "links to the editor" do
+    sign_in create(:user)
+
+    get account_path
+    expect(response.body).to include("Open the editor")
+    expect(response.body).to include(ENV.fetch("EDITOR_URL", "https://wrapmycover-app-f7c9e884aa33.herokuapp.com"))
+  end
+
 end

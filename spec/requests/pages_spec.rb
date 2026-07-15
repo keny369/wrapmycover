@@ -91,4 +91,22 @@ RSpec.describe "Public pages", type: :request do
     expect(response.headers["X-Content-Type-Options"]).to eq("nosniff")
     expect(response.headers["X-Frame-Options"]).to be_present
   end
+  describe "home CTAs by auth state" do
+    it "sends signed-out visitors to signup" do
+      get root_path
+      expect(response.body).to include("Wrap my cover")
+      expect(response.body).to include(new_user_registration_path)
+      expect(response.body).not_to include("Open the editor")
+    end
+
+    it "sends signed-in users to the editor, never back to signup" do
+      sign_in create(:user)
+
+      get root_path
+      expect(response.body).to include("Open the editor")
+      expect(response.body).to include(ENV.fetch("EDITOR_URL", "https://wrapmycover-app-f7c9e884aa33.herokuapp.com"))
+      expect(response.body).not_to include(%(href="#{new_user_registration_path}"))
+    end
+  end
+
 end

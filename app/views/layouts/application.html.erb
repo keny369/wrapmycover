@@ -78,6 +78,8 @@
           <%= link_to "Pricing", pricing_path, class: "text-parchment-700 hover:text-parchment-900" %>
           <% if user_signed_in? %>
             <%= link_to "Account", account_path, class: "text-parchment-700 hover:text-parchment-900" %>
+            <%= link_to "Open the editor", editor_url,
+                  class: "rounded-lg bg-oxblood-700 px-4 py-2 font-semibold text-parchment-50 hover:bg-oxblood-600" %>
             <%= button_to "Sign out", destroy_user_session_path, method: :delete,
                   class: "rounded-lg border border-parchment-200 px-3.5 py-2 font-semibold text-parchment-700 hover:bg-parchment-100 cursor-pointer" %>
           <% else %>

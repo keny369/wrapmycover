@@ -15,8 +15,13 @@
         barcode area, then exports a 300 DPI PDF ready for Amazon KDP.
       </p>
       <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
-        <%= link_to "Wrap my cover", new_user_registration_path,
-              class: "rounded-xl bg-oxblood-700 px-6 py-3.5 text-[15px] font-semibold text-parchment-50 hover:bg-oxblood-600" %>
+        <% if user_signed_in? %>
+          <%= link_to "Open the editor", editor_url,
+                class: "rounded-xl bg-oxblood-700 px-6 py-3.5 text-[15px] font-semibold text-parchment-50 hover:bg-oxblood-600" %>
+        <% else %>
+          <%= link_to "Wrap my cover", new_user_registration_path,
+                class: "rounded-xl bg-oxblood-700 px-6 py-3.5 text-[15px] font-semibold text-parchment-50 hover:bg-oxblood-600" %>
+        <% end %>
         <%= link_to "See how it works", "#how-it-works",
               class: "text-[15px] font-semibold text-parchment-900 underline-offset-4 hover:underline" %>
       </div>
@@ -218,7 +223,12 @@
   <div class="mx-auto max-w-3xl px-5 text-center">
     <h2 class="text-3xl font-semibold tracking-tight">The paperback you keep postponing.</h2>
     <p class="mt-4 text-lg text-parchment-700">Upload the cover. Download the file. Order the proof.</p>
-    <%= link_to "Wrap my cover", new_user_registration_path,
-          class: "mt-8 inline-block rounded-xl bg-oxblood-700 px-6 py-3.5 font-semibold text-parchment-50 hover:bg-oxblood-600" %>
+    <% if user_signed_in? %>
+      <%= link_to "Open the editor", editor_url,
+            class: "mt-8 inline-block rounded-xl bg-oxblood-700 px-6 py-3.5 font-semibold text-parchment-50 hover:bg-oxblood-600" %>
+    <% else %>
+      <%= link_to "Wrap my cover", new_user_registration_path,
+            class: "mt-8 inline-block rounded-xl bg-oxblood-700 px-6 py-3.5 font-semibold text-parchment-50 hover:bg-oxblood-600" %>
+    <% end %>
   </div>
 </section>
