@@ -15,8 +15,8 @@
     <h2 class="font-semibold">Free</h2>
     <p class="mt-2 text-4xl font-semibold">$0</p>
     <ul class="mt-6 space-y-2.5 text-sm text-parchment-700">
-      <li>Full visual editor, all three paths</li>
-      <li>Text extraction &amp; live layers</li>
+      <li>Full visual editor</li>
+      <li>Cover text extracted into editable layers</li>
       <li>Exact KDP geometry &amp; preflight</li>
       <li>Watermarked preview exports</li>
     </ul>
@@ -42,6 +42,7 @@
     <div class="mt-auto pt-7">
       <%= form_with url: checkouts_path, method: :post, data: { turbo: false } do |f| %>
         <%= f.hidden_field :kind, value: "book" %>
+        <%= f.label :book_title, "Your book's title", class: "sr-only" %>
         <%= f.text_field :book_title, required: true, maxlength: 120,
               placeholder: "Your book's title",
               class: "mb-3 w-full rounded-xl border border-parchment-300 bg-white px-4 py-3 text-sm focus:border-oxblood-600 focus:outline-none" %>

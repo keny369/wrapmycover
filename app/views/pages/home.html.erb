@@ -10,8 +10,9 @@
         Turn your ebook cover into a print-ready book cover.
       </h1>
       <p class="mt-5 max-w-xl text-lg text-parchment-700">
-        Upload the front cover you already have. Wrap My Cover builds the spine, back cover,
-        bleed, safe zones and barcode area, then exports a 300 DPI PDF ready for Amazon KDP.
+        Upload the front cover you already have &mdash; from your designer, from Canva, or from
+        your ebook edition. Wrap My Cover builds the spine, back cover, bleed, safe zones and
+        barcode area, then exports a 300 DPI PDF ready for Amazon KDP.
       </p>
       <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
         <%= link_to "Wrap my cover", new_user_registration_path,
@@ -19,7 +20,8 @@
         <%= link_to "See how it works", "#how-it-works",
               class: "text-[15px] font-semibold text-parchment-900 underline-offset-4 hover:underline" %>
       </div>
-      <p class="mt-4 text-sm text-parchment-700">Paperback, hardcover and dust jacket. No design software required.</p>
+      <p class="mt-4 text-sm text-parchment-700">Paperback and hardcover. No design software required.</p>
+      <p class="mt-1.5 text-sm text-parchment-700">Free to design and preview, no card needed. $14.99 once per book when you export.</p>
     </div>
 
     <!-- Stylised wrap diagram -->
@@ -62,7 +64,7 @@
   <div class="mx-auto flex max-w-6xl flex-wrap justify-center gap-x-10 gap-y-2 px-5 py-4 text-center text-sm font-medium text-parchment-700">
     <span>Sized to KDP&rsquo;s current specifications.</span>
     <span>Rebuilt in one click when your page count changes.</span>
-    <span>Fix-or-refund on file rejections.</span>
+    <span>Fix-or-refund on size, bleed, spine and barcode rejections.</span>
   </div>
 </section>
 
@@ -169,7 +171,7 @@
     <dl class="mt-8 space-y-7">
       <div>
         <dt class="font-semibold">Doesn&rsquo;t KDP have a free Cover Creator?</dt>
-        <dd class="mt-1.5 text-parchment-700">It does, and it is template-locked, runs only inside KDP, requires your interior to be processed first, and its files cannot be downloaded or reused anywhere else. Wrap My Cover starts from your finished design and gives you the file.</dd>
+        <dd class="mt-1.5 text-parchment-700">It does, and it is template-locked, runs only inside KDP, requires your interior to be processed first, and its files cannot be downloaded or reused anywhere else. Wrap My Cover starts from your finished design and gives you the file. Designing and previewing is free here too &mdash; the export is $14.99, once per book.</dd>
       </div>
       <div>
         <dt class="font-semibold">I can do this in Canva.</dt>
@@ -195,8 +197,24 @@
   </div>
 </section>
 
+<!-- Section 8: What it costs -->
+<section class="py-16">
+  <div class="mx-auto max-w-3xl px-5 text-center">
+    <h2 class="text-2xl font-semibold tracking-tight">What it costs.</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-parchment-700">
+      Designing and previewing your cover is free, for as long as you need.
+      Exporting a book&rsquo;s print-ready files is $14.99, once &mdash; every format and
+      every re-export for that title, forever. Designers and small presses can go Pro
+      for $99 a year and unlimited books.
+    </p>
+    <p class="mt-4 text-sm">
+      <%= link_to "Full pricing", pricing_path, class: "font-semibold text-parchment-900 underline-offset-4 hover:underline" %>
+    </p>
+  </div>
+</section>
+
 <!-- Closing -->
-<section class="py-20">
+<section class="border-t border-parchment-200 bg-parchment-100/60 py-20">
   <div class="mx-auto max-w-3xl px-5 text-center">
     <h2 class="text-3xl font-semibold tracking-tight">The paperback you keep postponing.</h2>
     <p class="mt-4 text-lg text-parchment-700">Upload the cover. Download the file. Order the proof.</p>
