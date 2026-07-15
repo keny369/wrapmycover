@@ -65,6 +65,9 @@ gem "invisible_captcha", "~> 2.3"
 # --- File storage (Active Storage on S3 in production) ---
 gem "aws-sdk-s3", "~> 1.0", require: false
 
+# --- Cross-app handoff tokens (editor SSO) ---
+gem "jwt", "~> 2.9"
+
 group :development, :test do
   gem "rspec-rails", "~> 8.0"
   gem "factory_bot_rails", "~> 6.4"

@@ -102,6 +102,7 @@ class WebhooksController < ActionController::API
 
     user.purchases.create!(
       book_title: session.metadata.try(:[], "book_title").presence || "Untitled book",
+      book_key: session.metadata.try(:[], "book_key").presence,
       stripe_checkout_session_id: session.id,
       status: "pending"
     )

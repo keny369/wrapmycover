@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_15_063800) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_15_071928) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -56,7 +56,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_15_063800) do
 
   create_table "purchases", force: :cascade do |t|
     t.integer "amount_cents"
+    t.string "book_key"
     t.string "book_title", null: false
+    t.string "content_fingerprint"
     t.datetime "created_at", null: false
     t.string "currency", default: "usd", null: false
     t.datetime "paid_at"
@@ -66,6 +68,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_15_063800) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["stripe_checkout_session_id"], name: "index_purchases_on_stripe_checkout_session_id", unique: true
+    t.index ["user_id", "book_key"], name: "index_purchases_on_user_id_and_book_key"
     t.index ["user_id", "status"], name: "index_purchases_on_user_id_and_status"
     t.index ["user_id"], name: "index_purchases_on_user_id"
   end

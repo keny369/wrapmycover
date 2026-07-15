@@ -8,6 +8,7 @@ class Purchase < ApplicationRecord
   validates :status, inclusion: { in: STATUSES }
 
   scope :paid, -> { where(status: "paid") }
+  scope :for_book_key, ->(key) { where(book_key: key) }
 
   def mark_paid!(payment_intent_id:, amount_cents:, currency:)
     update!(

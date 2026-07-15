@@ -42,6 +42,7 @@
     <div class="mt-auto pt-7">
       <%= form_with url: checkouts_path, method: :post, data: { turbo: false } do |f| %>
         <%= f.hidden_field :kind, value: "book" %>
+        <% if params[:book_key].present? %><%= f.hidden_field :book_key, value: params[:book_key] %><% end %>
         <%= f.label :book_title, "Your book's title", class: "sr-only" %>
         <%= f.text_field :book_title, required: true, maxlength: 120,
               placeholder: "Your book's title",

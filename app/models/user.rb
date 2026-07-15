@@ -23,6 +23,27 @@ class User < ApplicationRecord
     purchases.where(status: "paid")
   end
 
+  # The export gate. Pro users always pass. Otherwise there must be a paid
+  # purchase for this book_key, and it must be bound to the cover being
+  # exported: the fingerprint (computed server-side by the engine from the
+  # actual artwork) is recorded on the first authorized export and every later
+  # export must match it, so one purchase unlocks re-exports of the same cover
+  # and nothing else. Writes the binding on first use.
+  def authorize_export!(book_key:, fingerprint:)
+    return true if pro?
+    return false if book_key.blank? || fingerprint.blank?
+
+    purchase = paid_books.for_book_key(book_key).order(:created_at).first
+    return false unless purchase
+
+    if purchase.content_fingerprint.blank?
+      purchase.update!(content_fingerprint: fingerprint)
+      true
+    else
+      ActiveSupport::SecurityUtils.secure_compare(purchase.content_fingerprint, fingerprint)
+    end
+  end
+
   private
 
   def password_cannot_contain_email

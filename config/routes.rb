@@ -17,6 +17,13 @@ Rails.application.routes.draw do
 
   post "webhooks/stripe", to: "webhooks#stripe"
 
+  namespace :api do
+    namespace :internal do
+      # Server-to-server export authorization, called by the editor engine.
+      post "authorize_export", to: "authorize_export#create"
+    end
+  end
+
   get "robots.txt"  => "seo#robots",  defaults: { format: "text" }
   get "sitemap.xml" => "seo#sitemap", defaults: { format: "xml" }
 

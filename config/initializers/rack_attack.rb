@@ -26,7 +26,14 @@ class Rack::Attack
 
   ### Global request flood guard (per IP, excludes static assets) ###
   throttle("req/ip", limit: 300, period: 5.minutes) do |req|
-    req.ip unless req.path.start_with?("/assets", "/up")
+    req.ip unless req.path.start_with?("/assets", "/up", "/api/internal")
+  end
+
+  ### Internal export-authorization endpoint (signature-gated already) ###
+  # Its own generous, separately-keyed limit so a burst of legitimate editor
+  # traffic can't trip the global req/ip guard and fail-close paying users.
+  throttle("authorize_export/ip", limit: 120, period: 1.minute) do |req|
+    req.ip if req.post? && normalized_path(req) == "/api/internal/authorize_export"
   end
 
   ### Credential attacks ###
