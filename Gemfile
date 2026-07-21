@@ -66,7 +66,7 @@ gem "invisible_captcha", "~> 2.3"
 gem "aws-sdk-s3", "~> 1.0", require: false
 
 # --- Cross-app handoff tokens (editor SSO) ---
-gem "jwt", "~> 2.9"
+gem "jwt", "~> 3.2"
 
 group :development, :test do
   gem "rspec-rails", "~> 8.0"
