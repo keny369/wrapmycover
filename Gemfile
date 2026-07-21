@@ -58,7 +58,7 @@ end
 
 # --- Authentication, billing, protection ---
 gem "devise", "~> 4.9"
-gem "stripe", "~> 15.0"
+gem "stripe", "~> 19.3"
 gem "rack-attack", "~> 6.7"
 gem "invisible_captcha", "~> 2.3"
 
