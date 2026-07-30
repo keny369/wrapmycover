@@ -42,6 +42,13 @@ RSpec.describe "POST /api/internal/authorize_export", type: :request do
     expect(response.parsed_body["allowed"]).to be(true)
   end
 
+  it "allows an admin user for any book" do
+    user = create(:user, admin: true)
+    post_authorize(user_id: user.id, book_key: book_key, fingerprint: fingerprint)
+    expect(response).to have_http_status(:ok)
+    expect(response.parsed_body["allowed"]).to be(true)
+  end
+
   it "binds a book purchase to the first cover exported, then only that cover" do
     user = create(:user)
     create(:purchase, :paid, user: user, book_key: book_key, content_fingerprint: nil)

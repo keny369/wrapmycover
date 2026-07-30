@@ -41,4 +41,12 @@ RSpec.describe User, type: :model do
       expect(user.reload).not_to be_pro
     end
   end
+
+  describe "#authorize_export!" do
+    it "allows an admin user for any export" do
+      user = create(:user, admin: true)
+
+      expect(user.authorize_export!(book_key: "any-book", fingerprint: "a" * 64)).to be(true)
+    end
+  end
 end

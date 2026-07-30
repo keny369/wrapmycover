@@ -30,7 +30,7 @@ class User < ApplicationRecord
   # export must match it, so one purchase unlocks re-exports of the same cover
   # and nothing else. Writes the binding on first use.
   def authorize_export!(book_key:, fingerprint:)
-    return true if pro?
+    return true if admin? || pro?
     return false if book_key.blank? || fingerprint.blank?
 
     purchase = paid_books.for_book_key(book_key).order(:created_at).first
