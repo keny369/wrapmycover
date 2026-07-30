@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   root "pages#home"
   get "pricing", to: "pages#pricing"
+  get "founder", to: "pages#founder"
+  get "case-studies", to: "pages#case_studies"
 
   resource :account, only: :show
   resources :active_sessions, only: :destroy

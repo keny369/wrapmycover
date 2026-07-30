@@ -4,7 +4,69 @@
     <%
       page_title = content_for(:title).presence || "Wrap My Cover — ebook covers to print-ready KDP covers"
       page_desc  = content_for(:description).presence || "Turn your ebook cover into a print-ready paperback or hardcover cover. Wrap My Cover builds the spine, back and bleed, then exports a 300 DPI KDP PDF."
+      canonical_root = "https://#{ApplicationController::CANONICAL_HOST || request.host}"
       og_image   = "https://#{ApplicationController::CANONICAL_HOST || request.host}/og-image.png"
+      lee_id = "#{canonical_root}/#lee-powell"
+      wrap_org_id = "#{canonical_root}/#organization"
+      software_id = "#{canonical_root}/#software"
+      schema = {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": lee_id,
+            "name": "Lee Powell",
+            "url": "https://leepowell.com",
+            "sameAs": [
+              "https://github.com/keny369",
+              "https://lumenandlever.com",
+              canonical_root
+            ],
+            "jobTitle": "Author, founder and software engineer",
+            "description": "Lee Powell is an author, founder and software engineer in Melbourne who builds publishing, document and traceable AI systems."
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://lumenandlever.com/#organization",
+            "name": "Lumen & Lever",
+            "url": "https://lumenandlever.com",
+            "founder": { "@id": lee_id },
+            "description": "AI advisory and engineering studio for traceable document systems and production workflows."
+          },
+          {
+            "@type": "Organization",
+            "@id": wrap_org_id,
+            "name": "Wrap My Cover",
+            "url": canonical_root,
+            "logo": "#{canonical_root}/icon.png",
+            "founder": { "@id": lee_id },
+            "description": "The ebook-to-print cover converter. Turns an ebook cover into a print-ready Amazon KDP paperback or hardcover cover."
+          },
+          {
+            "@type": "WebApplication",
+            "@id": software_id,
+            "name": "Wrap My Cover",
+            "applicationCategory": "DesignApplication",
+            "operatingSystem": "Web",
+            "url": canonical_root,
+            "creator": { "@id": lee_id },
+            "publisher": { "@id": wrap_org_id },
+            "offers": {
+              "@type": "Offer",
+              "price": "14.99",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "#{canonical_root}/#website",
+            "name": "Wrap My Cover",
+            "url": canonical_root,
+            "creator": { "@id": lee_id },
+            "publisher": { "@id": wrap_org_id }
+          }
+        ]
+      }
     %>
     <title><%= page_title %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -28,25 +90,8 @@
     <meta name="twitter:image" content="<%= og_image %>">
 
     <%# Structured data %>
-    <% canonical_root = "https://#{ApplicationController::CANONICAL_HOST || request.host}" %>
     <script type="application/ld+json" nonce="<%= content_security_policy_nonce %>">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "name": "Wrap My Cover",
-          "url": "<%= canonical_root %>",
-          "logo": "<%= canonical_root %>/icon.png",
-          "description": "The ebook-to-print cover converter. Turns an ebook cover into a print-ready Amazon KDP paperback or hardcover cover."
-        },
-        {
-          "@type": "WebSite",
-          "name": "Wrap My Cover",
-          "url": "<%= canonical_root %>"
-        }
-      ]
-    }
+      <%= raw json_escape(schema.to_json) %>
     </script>
 
     <%= yield :head %>
@@ -75,6 +120,8 @@
           </span>
         <% end %>
         <div class="ml-auto flex items-center gap-5 text-sm">
+          <%= link_to "Case studies", case_studies_path, class: "hidden text-parchment-700 hover:text-parchment-900 md:inline" %>
+          <%= link_to "Founder", founder_path, class: "hidden text-parchment-700 hover:text-parchment-900 lg:inline" %>
           <%= link_to "Pricing", pricing_path, class: "text-parchment-700 hover:text-parchment-900" %>
           <% if user_signed_in? %>
             <%= link_to "Account", account_path, class: "text-parchment-700 hover:text-parchment-900" %>
@@ -110,6 +157,8 @@
       <div class="mx-auto flex max-w-6xl flex-wrap items-baseline gap-x-4 gap-y-2 px-5 text-sm text-parchment-700">
         <span class="font-semibold text-parchment-900">Wrap My Cover.</span>
         <span>The ebook-to-print cover converter.</span>
+        <%= link_to "Founder", founder_path, class: "font-semibold text-parchment-900 underline-offset-4 hover:underline" %>
+        <%= link_to "Case studies", case_studies_path, class: "font-semibold text-parchment-900 underline-offset-4 hover:underline" %>
         <span class="ml-auto">Wrap My Cover is not affiliated with Amazon. Amazon, Kindle and KDP are trademarks of Amazon.com, Inc.</span>
       </div>
     </footer>

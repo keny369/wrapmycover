@@ -1,0 +1,82 @@
+<% content_for :title, "Lee Powell - Founder of Wrap My Cover" %>
+<% content_for :description, "Lee Powell is the author, founder and software engineer behind Wrap My Cover and Lumen & Lever's traceable AI document systems." %>
+
+<% content_for :head do %>
+  <% canonical_root = "https://#{ApplicationController::CANONICAL_HOST || request.host}" %>
+  <% profile_schema = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": "#{canonical_root}/founder#profile",
+    "url": "#{canonical_root}/founder",
+    "name": "Lee Powell - Founder of Wrap My Cover",
+    "mainEntity": { "@id": "#{canonical_root}/#lee-powell" }
+  } %>
+  <script type="application/ld+json" nonce="<%= content_security_policy_nonce %>">
+    <%= raw json_escape(profile_schema.to_json) %>
+  </script>
+<% end %>
+
+<section class="mx-auto max-w-6xl px-5 pt-16 pb-12">
+  <p class="text-xs font-bold uppercase tracking-[0.18em] text-oxblood-600">Founder</p>
+  <h1 class="mt-4 max-w-4xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl text-balance">
+    Lee Powell builds writing, publishing and AI systems that have to hold up.
+  </h1>
+  <p class="mt-6 max-w-3xl text-lg text-parchment-700">
+    Lee Powell is an author, founder and software engineer in Melbourne. He built
+    document software used by writers worldwide, including Scrivener and Scapple for
+    Windows, and founded Lumen & Lever to build traceable AI and document systems for
+    production work.
+  </p>
+  <div class="mt-8 flex flex-wrap gap-4 text-sm font-semibold">
+    <%= link_to "Lee Powell author site", "https://leepowell.com",
+          class: "rounded-lg border border-parchment-300 px-4 py-2 text-parchment-900 hover:bg-parchment-100" %>
+    <%= link_to "Lumen & Lever", "https://lumenandlever.com",
+          class: "rounded-lg border border-parchment-300 px-4 py-2 text-parchment-900 hover:bg-parchment-100" %>
+    <%= link_to "GitHub keny369", "https://github.com/keny369",
+          class: "rounded-lg border border-parchment-300 px-4 py-2 text-parchment-900 hover:bg-parchment-100" %>
+  </div>
+</section>
+
+<section class="border-y border-parchment-200 bg-parchment-100/60 py-14">
+  <div class="mx-auto grid max-w-6xl gap-8 px-5 md:grid-cols-3">
+    <article>
+      <h2 class="font-semibold">Author</h2>
+      <p class="mt-2 text-sm text-parchment-700">
+        Lee writes books and field guides about systems, agency and the traps people get
+        caught inside. Wrap My Cover was built from a working author's print-production
+        problem, not as a generic graphics demo.
+      </p>
+    </article>
+    <article>
+      <h2 class="font-semibold">Software engineer</h2>
+      <p class="mt-2 text-sm text-parchment-700">
+        His work spans document software, banking and government systems, retail platforms
+        and production services where calculation, auditability and operational boundaries
+        matter.
+      </p>
+    </article>
+    <article>
+      <h2 class="font-semibold">Founder</h2>
+      <p class="mt-2 text-sm text-parchment-700">
+        Through Lumen & Lever, Lee builds practical AI systems for documents and decisions:
+        source-traced answers, reviewable outputs and workflows that expose what the model
+        used rather than hiding it.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section class="mx-auto max-w-6xl px-5 py-16">
+  <h2 class="text-2xl font-semibold tracking-tight">Why this matters for Wrap My Cover</h2>
+  <p class="mt-4 max-w-3xl text-parchment-700">
+    KDP cover generation is a production problem: the math has to be current, the PDF has
+    to be exact, and authors need to know what changed when trim, paper, binding or page
+    count changes. The project carries Lee's wider systems approach into a narrow, useful
+    publishing tool.
+  </p>
+  <p class="mt-5">
+    <%= link_to "Read the case studies", case_studies_path,
+          class: "font-semibold text-parchment-900 underline-offset-4 hover:underline" %>
+  </p>
+</section>
+

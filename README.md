@@ -1,7 +1,16 @@
-# KDP Cover Builder — Commerce Site
+# Wrap My Cover - Commerce Site
 
-Rails 8 app providing the public site, accounts, and payments for KDP Cover
-Builder (architecture A: this app fronts the Python editor engine).
+Rails 8 app providing the public site, accounts, and payments for Wrap My Cover
+(architecture A: this app fronts the Python editor engine).
+
+Wrap My Cover is built by [Lee Powell](https://leepowell.com), an author, founder
+and software engineer in Melbourne. Lee built document software used by writers
+worldwide, including Scrivener and Scapple for Windows, and runs
+[Lumen & Lever](https://lumenandlever.com), an AI engineering studio for
+traceable document systems and production workflows.
+
+The public site carries that identity through its founder page, case studies,
+sitemap, Open Graph tags and schema.org JSON-LD.
 
 ## Stack
 

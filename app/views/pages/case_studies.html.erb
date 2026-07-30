@@ -1,0 +1,101 @@
+<% content_for :title, "Case Studies - Wrap My Cover" %>
+<% content_for :description, "Public case studies for Wrap My Cover, Lee Powell's KDP cover geometry and print-ready PDF export system." %>
+
+<% content_for :head do %>
+  <% canonical_root = "https://#{ApplicationController::CANONICAL_HOST || request.host}" %>
+  <% case_schema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": "#{canonical_root}/case-studies#case-studies",
+    "name": "Wrap My Cover case studies",
+    "url": "#{canonical_root}/case-studies",
+    "author": { "@id": "#{canonical_root}/#lee-powell" },
+    "itemListElement": [
+      {
+        "@type": "Article",
+        "position": 1,
+        "headline": "VACANCY paperback and hardcover production exports",
+        "author": { "@id": "#{canonical_root}/#lee-powell" }
+      },
+      {
+        "@type": "Article",
+        "position": 2,
+        "headline": "KDP ruleset verification and PDF audit trail",
+        "author": { "@id": "#{canonical_root}/#lee-powell" }
+      },
+      {
+        "@type": "Article",
+        "position": 3,
+        "headline": "Paid export gate across Rails and FastAPI",
+        "author": { "@id": "#{canonical_root}/#lee-powell" }
+      }
+    ]
+  } %>
+  <script type="application/ld+json" nonce="<%= content_security_policy_nonce %>">
+    <%= raw json_escape(case_schema.to_json) %>
+  </script>
+<% end %>
+
+<section class="mx-auto max-w-6xl px-5 pt-16 pb-12">
+  <p class="text-xs font-bold uppercase tracking-[0.18em] text-oxblood-600">Public case studies</p>
+  <h1 class="mt-4 max-w-4xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl text-balance">
+    Production notes from the Wrap My Cover build.
+  </h1>
+  <p class="mt-6 max-w-3xl text-lg text-parchment-700">
+    These case studies make the engineering work visible for authors, developers,
+    contributors and search systems: the KDP geometry, the audit trail, and the boundary
+    between commerce and print-file generation.
+  </p>
+</section>
+
+<section class="border-t border-parchment-200 bg-parchment-100/60 py-14">
+  <div class="mx-auto max-w-6xl px-5">
+    <div class="grid gap-6 lg:grid-cols-3">
+      <article class="rounded-xl border border-parchment-200 bg-parchment-50 p-6">
+        <p class="text-xs font-bold uppercase tracking-[0.14em] text-oxblood-600">Print production</p>
+        <h2 class="mt-3 text-xl font-semibold tracking-tight">VACANCY paperback and hardcover exports</h2>
+        <p class="mt-3 text-sm text-parchment-700">
+          The VACANCY build used supplied front and back artwork, generated a title-only
+          spine, produced KDP paperback and case-laminate hardcover files, and audited the
+          result with proof-guide PDFs and 300 DPI PDF inspection.
+        </p>
+      </article>
+
+      <article class="rounded-xl border border-parchment-200 bg-parchment-50 p-6">
+        <p class="text-xs font-bold uppercase tracking-[0.14em] text-oxblood-600">Ruleset engineering</p>
+        <h2 class="mt-3 text-xl font-semibold tracking-tight">KDP ruleset verification</h2>
+        <p class="mt-3 text-sm text-parchment-700">
+          KDP spine factors, trim sizes, paper compatibility, bleed, wrap, hinge, barcode
+          placement and page-count limits are stored as versioned rules, then covered by
+          tests so geometry remains reviewable.
+        </p>
+      </article>
+
+      <article class="rounded-xl border border-parchment-200 bg-parchment-50 p-6">
+        <p class="text-xs font-bold uppercase tracking-[0.14em] text-oxblood-600">Product architecture</p>
+        <h2 class="mt-3 text-xl font-semibold tracking-tight">Paid export gate</h2>
+        <p class="mt-3 text-sm text-parchment-700">
+          The Rails site owns users, purchases and Stripe. The FastAPI editor owns geometry,
+          rendering and export, then calls a signed server-to-server authorization endpoint
+          before delivering clean print PDFs.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto max-w-6xl px-5 py-16">
+  <div class="max-w-3xl">
+    <h2 class="text-2xl font-semibold tracking-tight">What contributors should see</h2>
+    <p class="mt-4 text-parchment-700">
+      The useful work is narrow and testable: keep KDP rules current, preserve exact PDF
+      geometry, improve preflight warnings, expand import paths and make the browser editor
+      easier for authors without hiding the production constraints.
+    </p>
+    <p class="mt-5">
+      <%= link_to "Read about the founder", founder_path,
+            class: "font-semibold text-parchment-900 underline-offset-4 hover:underline" %>
+    </p>
+  </div>
+</section>
+

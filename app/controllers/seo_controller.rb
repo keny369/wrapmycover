@@ -4,6 +4,8 @@ class SeoController < ApplicationController
   PUBLIC_PATHS = [
     { path: "/",              changefreq: "weekly",  priority: "1.0" },
     { path: "/pricing",       changefreq: "monthly", priority: "0.8" },
+    { path: "/case-studies",  changefreq: "monthly", priority: "0.7" },
+    { path: "/founder",       changefreq: "monthly", priority: "0.7" },
     { path: "/users/sign_up", changefreq: "monthly", priority: "0.6" },
     { path: "/users/sign_in", changefreq: "monthly", priority: "0.4" }
   ].freeze
