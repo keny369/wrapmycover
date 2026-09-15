@@ -169,7 +169,7 @@ GEM
       reline (>= 0.4.2)
     jmespath (1.6.2)
     json (2.21.1)
-    jwt (2.10.3)
+    jwt (3.3.0)
       base64
     language_server-protocol (3.17.0.6)
     lint_roller (1.1.0)
@@ -418,7 +418,7 @@ DEPENDENCIES
   image_processing (~> 1.2)
   importmap-rails
   invisible_captcha (~> 2.3)
-  jwt (~> 2.9)
+  jwt (~> 3.3)
   pg (~> 1.1)
   propshaft
   puma (>= 5.0)
