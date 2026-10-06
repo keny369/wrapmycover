@@ -63,7 +63,7 @@ gem "rack-attack", "~> 6.7"
 gem "invisible_captcha", "~> 2.3"
 
 # --- File storage (Active Storage on S3 in production) ---
-gem "aws-sdk-s3", "~> 1.0", require: false
+gem "aws-sdk-s3", "~> 1.233", require: false
 
 # --- Cross-app handoff tokens (editor SSO) ---
 gem "jwt", "~> 2.9"
